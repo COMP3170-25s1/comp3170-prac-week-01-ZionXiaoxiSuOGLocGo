@@ -9,14 +9,18 @@ void main() {
    vec2 p = gl_FragCoord.xy / u_screenSize;   // scale p into range (0,0) to (1,1)
    //float d = distance(p, vec2(0.4, 0.3));     // calculate distance to midpoint
   vec2 v = abs(p - vec2(0.4, 0.3));
-  float d = max(v.x, v.y); 
+  //float d = max(v.x,v.y); 
   //float d = min(v.x, v.y);  
+  float x = v.x;
+  float y = v.y;
+  float diamondBoundry = x+y;
+   // manhatten distance
+   
   
-  
-   if (d < 0.2) {
+   if (diamondBoundry < 0.2) {
       o_colour = vec4(u_colour, 1);
    }
    else {
-      o_colour = vec4(0,0,0,1); // BLACK
+      o_colour = vec4(0,1,0,1); // GREEN
    }
 }
